@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webapi.eventplus.Domains
 {
+    [Table(nameof(TiposUsuario))]
     public class TiposUsuario
     {
         [Key]
