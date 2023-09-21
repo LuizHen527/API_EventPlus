@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.eventplus</name>
+    </assembly>
+    <members>
+        <member name="M:webapi.eventplus.Controllers.UsuarioController.Post(webapi.eventplus.Domains.Usuario)">
+            <summary>
+            Cadastra um novo usuario
+            </summary>
+            <param name="usuario">Usuario que sera cadastrado</param>
+            <returns>Retorna status code 200 se der certo</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.UsuarioController.Delete(System.Guid)">
+            <summary>
+            Deleta um usuario existente
+            </summary>
+            <param name="id">Id do usuario que sera deletado</param>
+            <returns>Retorna status code 200</returns>
+        </member>
+        <member name="T:webapi.eventplus.Migrations.DB1">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.eventplus.Migrations.DB1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.eventplus.Migrations.DB1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.eventplus.Migrations.DB1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:webapi.eventplus.Migrations.DB2">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.eventplus.Migrations.DB2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.eventplus.Migrations.DB2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.eventplus.Migrations.DB2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

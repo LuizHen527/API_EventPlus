@@ -3,6 +3,7 @@ using webapi.eventplus.Contexts;
 using webapi.eventplus.Domains;
 using webapi.eventplus.Interfaces;
 using webapi.eventplus.Utils;
+using webapi.eventplus.ViewModel;
 
 namespace webapi.eventplus.Repositories
 {
@@ -14,18 +15,48 @@ namespace webapi.eventplus.Repositories
         {
             _eventContext = new EventContext();
         }
+
+        public void Atualizar(Guid id, Usuario usuario)
+        {
+            Usuario usuarioBuscado = BuscarPorId(id);
+
+            usuario.IdUsuario = usuarioBuscado.IdUsuario;
+            usuario.Email = usuarioBuscado.Email;
+            usuario.Nome = usuarioBuscado.Nome;
+            usuario.IdTipoUsuario = usuarioBuscado.IdTipoUsuario;
+            usuario.Senha = usuarioBuscado.Senha;
+
+            _eventContext.Update(usuario);
+
+            _eventContext.SaveChanges();
+
+        }
+
         public Usuario BuscarPorEmailESenha(string email, string senha)
         {
             try
             {
-                Usuario usuarioBuscado = _eventContext.Usuario.FirstOrDefault(u => u.Email == email)!;
+                Usuario usuarioBuscado = _eventContext.Usuario!
+                    .Select(u => new Usuario
+                    {
+                        IdUsuario = u.IdUsuario,
+                        Nome = u.Nome,
+                        Email = u.Email,
+                        Senha = u.Senha,
+                        TiposUsuario = new TiposUsuario
+                        {
+                            IdTipoUsuario = u.IdTipoUsuario,
+                            Titulo = u.TiposUsuario!.Titulo
+                        }
+                    }).FirstOrDefault(u => u.Email == email)!;
 
-                if(usuarioBuscado != null)
+                if (usuarioBuscado != null)
                 {
                     bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha!);
 
                     if(confere)
                     {
+
                         return usuarioBuscado;
                     }
                 }
@@ -48,6 +79,7 @@ namespace webapi.eventplus.Repositories
                     {
                         IdUsuario = u.IdUsuario,
                         Nome = u.Nome,
+                        Email= u.Email,
                         TiposUsuario = new TiposUsuario
                         {
                             IdTipoUsuario= u.IdTipoUsuario,
@@ -74,6 +106,13 @@ namespace webapi.eventplus.Repositories
             usuario.Senha = Criptografia.GerarHash(usuario.Senha!);
 
             _eventContext.Usuario!.Add(usuario);
+
+            _eventContext.SaveChanges();
+        }
+
+        public void Deletar(Usuario usuario)
+        {
+            _eventContext.Usuario!.Remove(usuario);
 
             _eventContext.SaveChanges();
         }
