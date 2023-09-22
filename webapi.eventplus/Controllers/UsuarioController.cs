@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using webapi.eventplus.Contexts;
 using webapi.eventplus.Domains;
 using webapi.eventplus.Interfaces;
 using webapi.eventplus.Repositories;
@@ -91,7 +92,22 @@ namespace webapi.eventplus.Controllers
             }
         }
 
-
+        [HttpPut("atualizar")]
         
+        public IActionResult Atualizar(Guid id, Usuario usuario)
+        {
+            try
+            {
+
+                _usuarioRepository.Atualizar(id, usuario);
+
+                return StatusCode(200);
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro.Message);
+            }
+        }
     }
 }

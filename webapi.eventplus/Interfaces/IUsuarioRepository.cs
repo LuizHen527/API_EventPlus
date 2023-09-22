@@ -1,4 +1,5 @@
-﻿using webapi.eventplus.Domains;
+﻿using webapi.eventplus.Contexts;
+using webapi.eventplus.Domains;
 
 namespace webapi.eventplus.Interfaces
 {
@@ -12,7 +13,7 @@ namespace webapi.eventplus.Interfaces
 
         void Deletar(Usuario usuario);
 
-        void Atualizar(Usuario usuario);
+        void Atualizar(Guid id, Usuario usuario);
 
 
     }

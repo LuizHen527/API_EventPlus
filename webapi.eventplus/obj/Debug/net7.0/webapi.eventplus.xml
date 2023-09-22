@@ -18,6 +18,13 @@
             <param name="id">Id do usuario que sera deletado</param>
             <returns>Retorna status code 200</returns>
         </member>
+        <member name="M:webapi.eventplus.Controllers.UsuarioController.Get(System.Guid)">
+            <summary>
+            Metodo que mostra um usuario por meio de sua Id
+            </summary>
+            <param name="id">Id do usuario que sera buscado</param>
+            <returns>Retorna o usuario buscado</returns>
+        </member>
         <member name="T:webapi.eventplus.Migrations.DB1">
             <inheritdoc />
         </member>
