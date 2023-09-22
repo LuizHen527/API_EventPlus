@@ -4,6 +4,30 @@
         <name>webapi.eventplus</name>
     </assembly>
     <members>
+        <member name="M:webapi.eventplus.Controllers.TiposUsuarioController.#ctor">
+            <summary>
+            Instancia um repositorio com os metodos de TiposUsuario
+            </summary>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.TiposUsuarioController.Post(webapi.eventplus.Domains.TiposUsuario)">
+            <summary>
+            Cadastra um novo tipo de usuario 
+            </summary>
+            <param name="tiposUsuario">Tipo de usuario que sera cadastrado</param>
+            <returns>Rettorna status code 201</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.TiposUsuarioController.Deletar(System.Guid)">
+            <summary>
+            Deleta um tipo de usuario
+            </summary>
+            <param name="id">Id do tipo de usuario que sera deletado</param>
+            <returns>Retorna status code 204</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.UsuarioController.#ctor">
+            <summary>
+            Construtor que instancia o repositorio de usuario
+            </summary>
+        </member>
         <member name="M:webapi.eventplus.Controllers.UsuarioController.Post(webapi.eventplus.Domains.Usuario)">
             <summary>
             Cadastra um novo usuario
@@ -17,6 +41,85 @@
             </summary>
             <param name="id">Id do usuario que sera deletado</param>
             <returns>Retorna status code 200</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.UsuarioController.Get(System.Guid)">
+            <summary>
+            Mostra um usuario por meio de sua Id
+            </summary>
+            <param name="id">Id do usuario que sera buscado</param>
+            <returns>Retorna o usuario buscado</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.UsuarioController.Atualizar(System.Guid,webapi.eventplus.Domains.Usuario)">
+            <summary>
+            Atualiza um usuario
+            </summary>
+            <param name="id">Id do usuario que sera atualizado</param>
+            <param name="usuario">Usuario com os novos dados</param>
+            <returns>Retorna status code 200</returns>
+        </member>
+        <member name="T:webapi.eventplus.Interfaces.ITiposUsuarioRepository">
+            <summary>
+            Interface de tipos de usuario
+            </summary>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.ITiposUsuarioRepository.Cadastrar(webapi.eventplus.Domains.TiposUsuario)">
+            <summary>
+            Cadastra um novo Tipo de usuario
+            </summary>
+            <param name="TipoUsuario">Novo tipo de usuario que sera cadastrado</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.ITiposUsuarioRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta um tipo de usuario por seu id
+            </summary>
+            <param name="id">Id do usuario que sera deletado</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.ITiposUsuarioRepository.Listar">
+            <summary>
+            Lista todos os tipos de usuario
+            </summary>
+            <returns>Retorna uma lista com todos os tipos de usuario</returns>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.ITiposUsuarioRepository.Atualizar(System.Guid,webapi.eventplus.Domains.TiposUsuario)">
+            <summary>
+            Atualiza um tipo de usuario
+            </summary>
+            <param name="id"></param>
+            <param name="tipoUsuario"></param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IUsuarioRepository.Cadastrar(webapi.eventplus.Domains.Usuario)">
+            <summary>
+            Cadastra um usuario
+            </summary>
+            <param name="usuario">Usuario que sera cadastrado</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IUsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca um usuariopor seu id
+            </summary>
+            <param name="id">Id do usuario que sera buscado</param>
+            <returns>Retorna o usuario achado</returns>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IUsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
+            <summary>
+            Busca um usuario por seu email e senha
+            </summary>
+            <param name="email">email do usuario que sera buscado</param>
+            <param name="senha">senha do usuario que sera buscado</param>
+            <returns>Retorna usuario buscado</returns>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IUsuarioRepository.Deletar(webapi.eventplus.Domains.Usuario)">
+            <summary>
+            Deleta um usuario
+            </summary>
+            <param name="usuario">Usuario que sera deletado</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IUsuarioRepository.Atualizar(System.Guid,webapi.eventplus.Domains.Usuario)">
+            <summary>
+            Atualiza um usuario
+            </summary>
+            <param name="id">Id do usuario que sera atualizado</param>
+            <param name="usuario">Usuario com os novos dados</param>
         </member>
         <member name="T:webapi.eventplus.Migrations.DB1">
             <inheritdoc />
@@ -41,6 +144,80 @@
         </member>
         <member name="M:webapi.eventplus.Migrations.DB2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="M:webapi.eventplus.Repositories.TiposUsuarioRepository.#ctor">
+            <summary>
+            Intancia a context
+            </summary>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.TiposUsuarioRepository.Atualizar(System.Guid,webapi.eventplus.Domains.TiposUsuario)">
+            <summary>
+            Atualiza um tipo de usuario
+            </summary>
+            <param name="id">Id do tipo de usuario que sera atualizado</param>
+            <param name="tipoUsuarioAtualizado">Objeto com os novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.TiposUsuarioRepository.Cadastrar(webapi.eventplus.Domains.TiposUsuario)">
+            <summary>
+            Cadastra um novo Tipo de usuario
+            </summary>
+            <param name="TipoUsuario">Novo tipo de usuario que sera cadastrado</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.TiposUsuarioRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta um tipo de usuario por seu id
+            </summary>
+            <param name="id">Id do usuario que sera deletado</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.TiposUsuarioRepository.Listar">
+            <summary>
+            Lista todos os tipos de usuario
+            </summary>
+            <returns>Retorna uma lista com todos os tipos de usuario</returns>
+        </member>
+        <member name="T:webapi.eventplus.Repositories.UsuarioRepository">
+            <summary>
+            Classe com os metodos de usuario
+            </summary>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.UsuarioRepository.#ctor">
+            <summary>
+            Construtor para instanciar a context
+            </summary>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.UsuarioRepository.Atualizar(System.Guid,webapi.eventplus.Domains.Usuario)">
+            <summary>
+            Metodo que atualiza um usuario por meio de seu id
+            </summary>
+            <param name="id">Id do usuario que sera atualizado</param>
+            <param name="usuarioAtualizado">Usuario com os dados atualizados</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.UsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
+            <summary>
+            Busca um usuario por seu email e senha
+            </summary>
+            <param name="email">Email do usuario que sera buscado</param>
+            <param name="senha">Senha do usuario que sera buscado</param>
+            <returns>Retorna usuario buscado ou null se nao achou</returns>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.UsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Busca um usuario por seu id
+            </summary>
+            <param name="id">Id do usuario que sera buscado</param>
+            <returns>Retorna usuario buscado</returns>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.UsuarioRepository.Cadastrar(webapi.eventplus.Domains.Usuario)">
+            <summary>
+            Cadastra um novo usuario
+            </summary>
+            <param name="usuario">Usuario que sera cadastrado</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.UsuarioRepository.Deletar(webapi.eventplus.Domains.Usuario)">
+            <summary>
+            Deleta um usuario
+            </summary>
+            <param name="usuario">Usuario que sera deletado</param>
         </member>
     </members>
 </doc>

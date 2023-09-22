@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using webapi.eventplus.Contexts;
 using webapi.eventplus.Domains;
 using webapi.eventplus.Interfaces;
 using webapi.eventplus.Repositories;
@@ -12,6 +13,10 @@ namespace webapi.eventplus.Controllers
     public class UsuarioController : ControllerBase
     {
         private IUsuarioRepository _usuarioRepository;
+
+        /// <summary>
+        /// Construtor que instancia o repositorio de usuario
+        /// </summary>
 
         public UsuarioController()
         {
@@ -69,7 +74,7 @@ namespace webapi.eventplus.Controllers
         }
 
         /// <summary>
-        /// Metodo que mostra um usuario por meio de sua Id
+        /// Mostra um usuario por meio de sua Id
         /// </summary>
         /// <param name="id">Id do usuario que sera buscado</param>
         /// <returns>Retorna o usuario buscado</returns>
@@ -91,7 +96,29 @@ namespace webapi.eventplus.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza um usuario
+        /// </summary>
+        /// <param name="id">Id do usuario que sera atualizado</param>
+        /// <param name="usuario">Usuario com os novos dados</param>
+        /// <returns>Retorna status code 200</returns>
 
+        [HttpPut("atualizar")]
         
+        public IActionResult Atualizar(Guid id, Usuario usuario)
+        {
+            try
+            {
+
+                _usuarioRepository.Atualizar(id, usuario);
+
+                return StatusCode(200);
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro.Message);
+            }
+        }
     }
 }

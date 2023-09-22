@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using webapi.eventplus.Contexts;
 using webapi.eventplus.Domains;
 using webapi.eventplus.Interfaces;
@@ -7,30 +8,48 @@ using webapi.eventplus.ViewModel;
 
 namespace webapi.eventplus.Repositories
 {
+
+    /// <summary>
+    /// Classe com os metodos de usuario
+    /// </summary>
+
     public class UsuarioRepository : IUsuarioRepository
     {
         private readonly EventContext _eventContext;
+
+        /// <summary>
+        /// Construtor para instanciar a context
+        /// </summary>
 
         public UsuarioRepository()
         {
             _eventContext = new EventContext();
         }
 
-        public void Atualizar(Guid id, Usuario usuario)
+        /// <summary>
+        /// Metodo que atualiza um usuario por meio de seu id
+        /// </summary>
+        /// <param name="id">Id do usuario que sera atualizado</param>
+        /// <param name="usuarioAtualizado">Usuario com os dados atualizados</param>
+
+        public void Atualizar(Guid id, Usuario usuarioAtualizado)
         {
-            Usuario usuarioBuscado = BuscarPorId(id);
+            Usuario usuarioBuscado = new Usuario();
 
-            usuario.IdUsuario = usuarioBuscado.IdUsuario;
-            usuario.Email = usuarioBuscado.Email;
-            usuario.Nome = usuarioBuscado.Nome;
-            usuario.IdTipoUsuario = usuarioBuscado.IdTipoUsuario;
-            usuario.Senha = usuarioBuscado.Senha;
-
-            _eventContext.Update(usuario);
-
-            _eventContext.SaveChanges();
-
+            _eventContext.Usuario!.Where(usuarioBuscado => usuarioBuscado.IdUsuario == id)
+                                    .ExecuteUpdateAsync(updates =>
+                                         updates.SetProperty(usuarioBuscado => usuarioBuscado.Nome, usuarioAtualizado.Nome)
+                                                .SetProperty(usuarioBuscado => usuarioBuscado.Email, usuarioAtualizado.Email)
+                                                .SetProperty(usuarioBuscado => usuarioBuscado.Senha, usuarioAtualizado.Senha)
+                                                .SetProperty(usuarioBuscado => usuarioBuscado.IdTipoUsuario, usuarioAtualizado.IdTipoUsuario));
         }
+
+        /// <summary>
+        /// Busca um usuario por seu email e senha
+        /// </summary>
+        /// <param name="email">Email do usuario que sera buscado</param>
+        /// <param name="senha">Senha do usuario que sera buscado</param>
+        /// <returns>Retorna usuario buscado ou null se nao achou</returns>
 
         public Usuario BuscarPorEmailESenha(string email, string senha)
         {
@@ -70,6 +89,12 @@ namespace webapi.eventplus.Repositories
             }
         }
 
+        /// <summary>
+        /// Busca um usuario por seu id
+        /// </summary>
+        /// <param name="id">Id do usuario que sera buscado</param>
+        /// <returns>Retorna usuario buscado</returns>
+
         public Usuario BuscarPorId(Guid id)
         {
             try
@@ -101,6 +126,11 @@ namespace webapi.eventplus.Repositories
             }
         }
 
+        /// <summary>
+        /// Cadastra um novo usuario
+        /// </summary>
+        /// <param name="usuario">Usuario que sera cadastrado</param>
+
         public void Cadastrar(Usuario usuario)
         {
             usuario.Senha = Criptografia.GerarHash(usuario.Senha!);
@@ -109,6 +139,11 @@ namespace webapi.eventplus.Repositories
 
             _eventContext.SaveChanges();
         }
+
+        /// <summary>
+        /// Deleta um usuario
+        /// </summary>
+        /// <param name="usuario">Usuario que sera deletado</param>
 
         public void Deletar(Usuario usuario)
         {
