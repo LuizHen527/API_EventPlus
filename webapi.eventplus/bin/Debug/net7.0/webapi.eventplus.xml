@@ -4,6 +4,81 @@
         <name>webapi.eventplus</name>
     </assembly>
     <members>
+        <member name="M:webapi.eventplus.Controllers.InstituicaoController.Cadastrar(webapi.eventplus.Domains.Instituicao)">
+            <summary>
+            Cadastra uma nova instituicao
+            </summary>
+            <param name="instituicao">Nova instituicao</param>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.InstituicaoController.Atualizar(System.Guid,webapi.eventplus.Domains.Instituicao)">
+            <summary>
+            Atualiza uma instituicao
+            </summary>
+            <param name="id">Id da instituicao</param>
+            <param name="instituicao">Novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.InstituicaoController.Listar">
+            <summary>
+            Lista todas as instituicoes
+            </summary>
+            <returns>Retorna lista com instituicoes</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.InstituicaoController.Deletar(System.Guid)">
+            <summary>
+            Deleta uma instituicao
+            </summary>
+            <param name="id">Id da instituicao que sera deletada</param>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.PresencasEventoController.Cadastrar(webapi.eventplus.Domains.PresencasEvento)">
+            <summary>
+            Cadastra uma nova presenca no evento
+            </summary>
+            <param name="presencasEvento">Nova presencaEvento</param>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.PresencasEventoController.Listar">
+            <summary>
+            Lista todas as presenca evento
+            </summary>
+            <returns>Retorna uma lista com todas as presencas evento</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.PresencasEventoController.Deletar(System.Guid)">
+            <summary>
+            Deleta uma presenca evento
+            </summary>
+            <param name="id">Id da presenca evento que sera deletada</param>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.PresencasEventoController.Atualizar(System.Guid,webapi.eventplus.Domains.PresencasEvento)">
+            <summary>
+            Atualiza uma presenca evento
+            </summary>
+            <param name="id">Id da presenca evento que sera atualizada</param>
+            <param name="presencasEvento">Objeto com os novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.TiposEventoController.Cadastrar(webapi.eventplus.Domains.TiposEvento)">
+            <summary>
+            Cadastra um novo tipo de evento
+            </summary>
+            <param name="tiposEvento">Novo tipo de evento</param>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.TiposEventoController.Listar">
+            <summary>
+            Lista todos os tipos de evento
+            </summary>
+            <returns>Retorna uma lista com todos os tipos de evento</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.TiposEventoController.Atualizar(System.Guid,webapi.eventplus.Domains.TiposEvento)">
+            <summary>
+            Atualiza um tipo de evento
+            </summary>
+            <param name="id">Id do evento que sera atualizado</param>
+            <param name="tiposEvento">Objeto com os novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.TiposEventoController.Deletar(System.Guid)">
+            <summary>
+            Deleta um tipo de evento
+            </summary>
+            <param name="id">Id do tipo de evento que sera deletado</param>
+        </member>
         <member name="M:webapi.eventplus.Controllers.TiposUsuarioController.#ctor">
             <summary>
             Instancia um repositorio com os metodos de TiposUsuario
@@ -22,6 +97,20 @@
             </summary>
             <param name="id">Id do tipo de usuario que sera deletado</param>
             <returns>Retorna status code 204</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.TiposUsuarioController.Atualizar(System.Guid,webapi.eventplus.Domains.TiposUsuario)">
+            <summary>
+            Atualiza um tipo de usuario
+            </summary>
+            <param name="id">Id do usuario que sera atualizado</param>
+            <param name="tipoUsuario">Objeto com dados atualizados</param>
+            <returns>Retorna status code 204</returns>
+        </member>
+        <member name="M:webapi.eventplus.Controllers.TiposUsuarioController.ListarTodos">
+            <summary>
+            Lista todos os Tipos de Usuarios
+            </summary>
+            <returns>Retorna os tipos de usuario</returns>
         </member>
         <member name="M:webapi.eventplus.Controllers.UsuarioController.#ctor">
             <summary>
@@ -56,6 +145,141 @@
             <param name="id">Id do usuario que sera atualizado</param>
             <param name="usuario">Usuario com os novos dados</param>
             <returns>Retorna status code 200</returns>
+        </member>
+        <member name="T:webapi.eventplus.Interfaces.IComentarioEventoRepository">
+            <summary>
+            Interface com os metodos de ComentarioEvento
+            </summary>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IComentarioEventoRepository.Cadastrar(webapi.eventplus.Domains.ComentarioEvento)">
+            <summary>
+            Cadastra um comentario
+            </summary>
+            <param name="comentarioEvento">Novo comentario de evento</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IComentarioEventoRepository.Listar">
+            <summary>
+            Lista todos os comentarios de evento
+            </summary>
+            <returns>Retorna uma lista com todos os comentarios de evento</returns>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IComentarioEventoRepository.Atualizar(System.Guid,webapi.eventplus.Domains.ComentarioEvento)">
+            <summary>
+            Atualiza um comentario de evento
+            </summary>
+            <param name="id">Id do comentario de evento que sera atualizado</param>
+            <param name="evento">Comentario de evento com os novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IComentarioEventoRepository.Delete(System.Guid)">
+            <summary>
+            Deleta um comentario de evento
+            </summary>
+            <param name="id">Id do comentario de evento que sera deletado</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IEventoRepository.Cadastrar(webapi.eventplus.Domains.Evento)">
+            <summary>
+            Cadastra um evento
+            </summary>
+            <param name="evento">Evento que era cadastrado</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IEventoRepository.Listar">
+            <summary>
+            Lista todos os eventos
+            </summary>
+            <returns>Retorna uma lista com todos os eventos</returns>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IEventoRepository.Atualizar(System.Guid,webapi.eventplus.Domains.Evento)">
+            <summary>
+            Atualiza um evento
+            </summary>
+            <param name="id">Id do evento que sera atualizado</param>
+            <param name="evento">Objeto com novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta um evento
+            </summary>
+            <param name="id">Id do evento que sera deletado</param>
+        </member>
+        <member name="T:webapi.eventplus.Interfaces.IInstituicaoRepository">
+            <summary>
+            Interface de instituicoes
+            </summary>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IInstituicaoRepository.Cadastrar(webapi.eventplus.Domains.Instituicao)">
+            <summary>
+            Cadastra uma nova instituicao
+            </summary>
+            <param name="instituicao">Nova instituicao</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IInstituicaoRepository.Listar">
+            <summary>
+            Lista todas as instituicoes
+            </summary>
+            <returns>Retorna uma lista com as instituicoes</returns>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IInstituicaoRepository.Atualizar(System.Guid,webapi.eventplus.Domains.Instituicao)">
+            <summary>
+            Atualiza uma instituicao
+            </summary>
+            <param name="id">Id da instituicao que sera atualizada</param>
+            <param name="instituicao">Objeto com os novos dados de instituicao</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IInstituicaoRepository.Delete(System.Guid)">
+            <summary>
+            Deleta uma instituicao
+            </summary>
+            <param name="id">Id da instituicao que sera deletada</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IPresencasEventoRepository.Cadastrar(webapi.eventplus.Domains.PresencasEvento)">
+            <summary>
+            Cadastra uma nova presenca no evento
+            </summary>
+            <param name="presencasEvento">Nova presencaEvento</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IPresencasEventoRepository.Listar">
+            <summary>
+            Lista todas as presenca evento
+            </summary>
+            <returns>Retorna uma lista com todas as presencas evento</returns>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IPresencasEventoRepository.Atualizar(System.Guid,webapi.eventplus.Domains.PresencasEvento)">
+            <summary>
+            Atualiza uma presenca evento
+            </summary>
+            <param name="id">Id da presenca evento que sera atualizada</param>
+            <param name="presencasEvento">Objeto com os novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.IPresencasEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta uma presenca evento
+            </summary>
+            <param name="id">Id da presenca evento que sera deletada</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.ITiposEventoRepository.Cadastrar(webapi.eventplus.Domains.TiposEvento)">
+            <summary>
+            Cadastra um tipo de evento
+            </summary>
+            <param name="tiposEvento">Tipo de evento que sera cadastrado</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.ITiposEventoRepository.Listar">
+            <summary>
+            Lista todos os tipos de evento
+            </summary>
+            <returns>Retorna uma lista com todos os tipos de evento</returns>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.ITiposEventoRepository.Atualizar(System.Guid,webapi.eventplus.Domains.TiposEvento)">
+            <summary>
+            Atualiza um tipo de evento
+            </summary>
+            <param name="id">Id do tipo de evento que sera atualizado</param>
+            <param name="tiposEvento">Objeto com os dados atualizados</param>
+        </member>
+        <member name="M:webapi.eventplus.Interfaces.ITiposEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta um tipo de evento
+            </summary>
+            <param name="id">Id do tipo de evento que sera deletado</param>
         </member>
         <member name="T:webapi.eventplus.Interfaces.ITiposUsuarioRepository">
             <summary>
@@ -144,6 +368,110 @@
         </member>
         <member name="M:webapi.eventplus.Migrations.DB2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="M:webapi.eventplus.Repositories.EventoRepository.Atualizar(System.Guid,webapi.eventplus.Domains.Evento)">
+            <summary>
+            Deleta um evento
+            </summary>
+            <param name="id">Id do evento que sera deletado</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.EventoRepository.Cadastrar(webapi.eventplus.Domains.Evento)">
+            <summary>
+            Cadastra um evento
+            </summary>
+            <param name="evento">Evento que era cadastrado</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.EventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta um evento
+            </summary>
+            <param name="id">Id do evento que sera deletado</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.EventoRepository.Listar">
+            <summary>
+            Lista todos os eventos
+            </summary>
+            <returns>Retorna uma lista com todos os eventos</returns>
+        </member>
+        <member name="T:webapi.eventplus.Repositories.InstituicaoRepository">
+            <summary>
+            Classe com os metodos de Instituicao
+            </summary>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.InstituicaoRepository.Atualizar(System.Guid,webapi.eventplus.Domains.Instituicao)">
+            <summary>
+            Atualiza uma instituicao
+            </summary>
+            <param name="id">Id da instituicao</param>
+            <param name="instituicao">Novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.InstituicaoRepository.Cadastrar(webapi.eventplus.Domains.Instituicao)">
+            <summary>
+            Cadastra uma nova instituicao
+            </summary>
+            <param name="instituicao">Nova instituicao</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.InstituicaoRepository.Delete(System.Guid)">
+            <summary>
+            Deleta uma instituicao
+            </summary>
+            <param name="id">Id da instituicao que sera deletada</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.InstituicaoRepository.Listar">
+            <summary>
+            Lista todas as instituicoes
+            </summary>
+            <returns>Retorna lista com instituicoes</returns>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.PresencasEventoRepository.Atualizar(System.Guid,webapi.eventplus.Domains.PresencasEvento)">
+            <summary>
+            Atualiza uma presenca evento
+            </summary>
+            <param name="id">Id da presenca evento que sera atualizada</param>
+            <param name="presencasEvento">Objeto com os novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.PresencasEventoRepository.Cadastrar(webapi.eventplus.Domains.PresencasEvento)">
+            <summary>
+            Cadastra uma nova presenca no evento
+            </summary>
+            <param name="presencasEvento">Nova presencaEvento</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.PresencasEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta uma presenca evento
+            </summary>
+            <param name="id">Id da presenca evento que sera deletada</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.PresencasEventoRepository.Listar">
+            <summary>
+            Lista todas as presenca evento
+            </summary>
+            <returns>Retorna uma lista com todas as presencas evento</returns>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.TiposEventoRepository.Atualizar(System.Guid,webapi.eventplus.Domains.TiposEvento)">
+            <summary>
+            Atualiza um tipo de evento
+            </summary>
+            <param name="id">Id do evento que sera atualizado</param>
+            <param name="tiposEvento">Objeto com os novos dados</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.TiposEventoRepository.Cadastrar(webapi.eventplus.Domains.TiposEvento)">
+            <summary>
+            Cadastra um novo tipo de evento
+            </summary>
+            <param name="tiposEvento">Novo tipo de evento</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.TiposEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Deleta um tipo de evento
+            </summary>
+            <param name="id">Id do tipo de evento que sera deletado</param>
+        </member>
+        <member name="M:webapi.eventplus.Repositories.TiposEventoRepository.Listar">
+            <summary>
+            Lista todos os tipos de evento
+            </summary>
+            <returns>Retorna uma lista com todos os tipos de evento</returns>
         </member>
         <member name="M:webapi.eventplus.Repositories.TiposUsuarioRepository.#ctor">
             <summary>

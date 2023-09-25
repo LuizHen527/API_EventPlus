@@ -92,5 +92,29 @@ namespace webapi.eventplus.Controllers
                 return BadRequest(erro.Message);
             }
         }
+
+        /// <summary>
+        /// Lista todos os Tipos de Usuarios
+        /// </summary>
+        /// <returns>Retorna os tipos de usuario</returns>
+
+        [HttpGet]
+
+        public IActionResult ListarTodos()
+        {
+            try
+            {
+                List<TiposUsuario> TiposUsuario = new List<TiposUsuario>();
+
+                TiposUsuario = _tiposUsuarioRepository.Listar();
+
+                return Ok(TiposUsuario);
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro.Message);
+            }
+        }
     }
 }

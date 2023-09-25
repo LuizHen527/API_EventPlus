@@ -64,14 +64,28 @@ namespace webapi.eventplus.Repositories
 
         public List<TiposUsuario> Listar()
         {
-            var todosTiposUsuario = _eventContext.TiposUsuario.ToListAsync();
+            List<TiposUsuario> tiposUsuarios = new List<TiposUsuario>();
 
-            var existeObjeto = _eventContext.TiposUsuario.SingleOrDefault();
+            var todosTiposUsuario = _eventContext.TiposUsuario!.ToList();
 
-            if (existeObjeto)
+            //var existeObjeto = _eventContext.TiposUsuario.SingleOrDefault();
+
+            if (todosTiposUsuario != null)
             {
-                foreach
+                foreach (var TipoUsuario in todosTiposUsuario)
+                {
+                    tiposUsuarios.Add(new TiposUsuario()
+                    {
+                        IdTipoUsuario = TipoUsuario.IdTipoUsuario,
+                        Titulo = TipoUsuario.Titulo
+                    });
+                }
+
+                return tiposUsuarios;
             }
+
+
+            return null!;
 
         }
     }

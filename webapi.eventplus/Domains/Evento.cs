@@ -21,6 +21,8 @@ namespace webapi.eventplus.Domains
         [Required(ErrorMessage = "Descricao obrigatoria")]
         public string? Descricao { get; set; }
 
+        //Foreign keys
+
         [Required(ErrorMessage = "Id Tipo evento obrigatorio")]
         public Guid IdTipoEvento { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.eventplus.Contexts;
 using webapi.eventplus.Domains;
@@ -29,6 +30,7 @@ namespace webapi.eventplus.Controllers
         /// <param name="usuario">Usuario que sera cadastrado</param>
         /// <returns>Retorna status code 200 se der certo</returns>
 
+        [Authorize("Admin")]
         [HttpPost]
 
         public IActionResult Post(Usuario usuario)

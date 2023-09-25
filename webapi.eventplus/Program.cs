@@ -2,6 +2,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
+//Preciso adicionar o autorizar metodo por usuario e listar os itens das foreign key nos metodos de listagem
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
